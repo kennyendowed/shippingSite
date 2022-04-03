@@ -1,0 +1,25 @@
+#local-player {
+    height: 200px;
+    width: 200px;
+}
+.btn {
+    margin: 5px;
+}
+
+.local {
+    right: 0rem;
+    bottom: 9rem;
+    width: 25vw;
+    height: 45vh;
+    border-radius: 18px;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .remote {
+   
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+  }

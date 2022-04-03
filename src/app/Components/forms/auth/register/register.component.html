@@ -1,0 +1,179 @@
+
+  <form [formGroup]="registerForm" (ngSubmit)="register(registerForm.value)" >
+
+
+    <div class="form-group position-relative has-icon-left">
+        <label for="username">Firstname</label>
+        <div class="position-relative">
+            <input type="text" class="form-control" formControlName="firstname">
+            <div class="form-control-icon">
+                <i data-feather="user"></i>
+            </div>
+        </div>
+        <div class="text-danger fs-12">
+            <div *ngFor="let validation of validation_messages.firstname">
+              <div class="error-message" *ngIf="registerForm.get('firstname').hasError(validation.type) &&
+                            registerForm.get('firstname').touched">
+                <div>
+                 {{"       "+validation.message}}
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    <div class="form-group position-relative has-icon-left">
+        <label for="username">Lastname</label>
+        <div class="position-relative">
+            <input type="text" class="form-control" formControlName="lastname">
+            <div class="form-control-icon">
+                <i data-feather="user"></i>
+            </div>
+        </div>
+        <div class="text-danger fs-12">
+            <div *ngFor="let validation of validation_messages.lastname">
+              <div class="error-message" *ngIf="registerForm.get('lastname').hasError(validation.type) &&
+                            registerForm.get('lastname').touched">
+                <div>
+                 {{"       "+validation.message}}
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    <!-- <div class="form-group position-relative has-icon-left">
+      <label for="username">Username</label>
+      <div class="position-relative">
+          <input type="text" class="form-control" formControlName="username">
+          <div class="form-control-icon">
+              <i data-feather="user"></i>
+          </div>
+      </div>
+      <div class="text-danger fs-12">
+          <div *ngFor="let validation of validation_messages.username">
+            <div class="error-message" *ngIf="registerForm.get('username').hasError(validation.type) &&
+                          registerForm.get('username').touched">
+              <div>
+               {{"       "+validation.message}}
+              </div>
+            </div>
+          </div>
+        </div>
+  </div> -->
+    <div class="form-group position-relative has-icon-left">
+        <label for="username">Email</label>
+        <div class="position-relative">
+            <input type="email" class="form-control" formControlName="email">
+            <div class="form-control-icon">
+                <i data-feather="user"></i>
+            </div>
+        </div>
+        <div class="text-danger fs-12">
+            <div *ngFor="let validation of validation_messages.email">
+              <div class="error-message" *ngIf="registerForm.get('email').hasError(validation.type) &&
+                            registerForm.get('email').touched">
+                <div>
+                 {{"       "+validation.message}}
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    <div class="form-group position-relative has-icon-left">
+      <label>Gender</label>
+      <div class="input-group">
+        <select  class="form-control form-select" formControlName="gender" >
+          <option selected>select gender type</option>
+          <option value="m">Male</option>
+          <option value="f">Female</option>         
+        </select>
+         
+        
+        </div>
+      <div class="text-danger fs-12">
+          <div *ngFor="let validation of validation_messages.gender">
+            <div class="error-message" *ngIf="registerForm.get('gender').hasError(validation.type) &&
+                          registerForm.get('gender').touched">
+              <div>
+               {{"       "+validation.message}}
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="form-group position-relative has-icon-left">
+        <label>Password</label>
+        <div class="input-group">
+            <input  [type]="fieldTextType ? 'text' : 'password'" class="form-control" formControlName="password" (change)="onPasswordChange()">
+            <span class="input-group-text">
+              <i
+                class="fa"
+                [ngClass]="{
+                  'fa-eye-slash': !fieldTextType,
+                  'fa-eye': fieldTextType
+                }"
+                (click)="toggleFieldTextType()"
+              ></i>
+            </span>
+          </div>
+        <div class="text-danger fs-12">
+            <div *ngFor="let validation of validation_messages.password">
+              <div class="error-message" *ngIf="registerForm.get('password').hasError(validation.type) &&
+                            registerForm.get('password').touched">
+                <div>
+                 {{"       "+validation.message}}
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="form-group position-relative has-icon-left">
+        <label>Repeat your password</label>
+        <div class="input-group">
+            <input   [type]="repeatFieldTextType ? 'text' : 'password'" class="form-control" formControlName="confirm_password" (change)="onPasswordChange()">
+            <span class="input-group-text">
+                <i
+                class="fa"
+                [ngClass]="{
+                  'fa-eye-slash': !repeatFieldTextType,
+                  'fa-eye': repeatFieldTextType
+                }"
+                (click)="toggleRepeatFieldTextType()"
+              ></i>
+            </span>
+          </div>
+        <div class="text-danger fs-12">
+            <span *ngIf="confirm_password.hasError('mismatch')">Password do not match.</span>
+          </div>
+      </div>
+    <div class="form-group position-relative has-icon-left">
+        <label for="username">Phone</label><br>
+        
+        <ngx-intl-tel-input [cssClass]="'custom'" [preferredCountries]="preferredCountries"
+        [enableAutoCountrySelect]="true" [enablePlaceholder]="true" [searchCountryFlag]="true"
+        [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]" [selectFirstCountry]="false"
+        [selectedCountryISO]="CountryISO.Nigeria" [maxLength]="15"
+        [phoneValidation]="true" [separateDialCode]="separateDialCode"
+        [numberFormat]="PhoneNumberFormat.National" formControlName="phone">
+    </ngx-intl-tel-input>
+ </div>
+
+    <div class='form-check clearfix my-4'>
+        <div class="checkbox float-start">
+            <label for="checkbox1">By continuing, you agree to our <span class="terms">terms and conditions</span></label>
+        </div>
+        <div class="float-end">
+            <a [routerLink]="['/login']">Already have an account?</a>
+        </div>
+    </div>
+    <div class="clearfix" style="text-align: center;"> 
+        <button class="btn btn-primary btn-block col-10"  [disabled]="!registerForm.valid">
+            <span *ngIf="!loading" class="lds-ellipsis"> Register</span>
+            <span *ngIf="loading" class="lds-ellipsis"><div style="background: rgb(190, 18, 61);"></div><div  style="background: rgb(87, 18, 18);"></div><div style="background: #cef;"></div><div style="background: rgb(97, 204, 10);"></div></span>
+        </button>
+
+    </div>
+</form>
+
+<!--  -->

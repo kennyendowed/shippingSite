@@ -1,0 +1,24 @@
+<div id="auth">
+
+  <div class="container">
+      <div class="row">
+          <div class="col-md-5 col-sm-12 mx-auto">
+              <div class="card pt-4">
+                  <div class="card-body">
+                    <div class="text-center mb-5">
+                        <img src="../../../../assets/auth/images/logo.svg" height="48" class='mb-4'>
+                        <h3>{{ form }}</h3>
+                        <p>Please {{ form }} to continue to Voler.</p>
+                    </div>
+                     <app-register *ngIf="form =='register'"></app-register>
+                     <app-login *ngIf="form =='login'"></app-login>
+                     <app-request-reset *ngIf="form =='forgot'"></app-request-reset>
+                     <app-reset-password *ngIf="form =='reset'"></app-reset-password>
+                     <app-verify-account *ngIf="form =='verifyAccount'"></app-verify-account> 
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+      </div>

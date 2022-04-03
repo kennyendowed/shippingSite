@@ -1,0 +1,29 @@
+
+<form [formGroup]="vfForm" (ngSubmit)="verify(vfForm.value)" >
+    <div class="form-group position-relative has-icon-left">
+        <label for="username">Verification Code</label>
+        <div class="position-relative">
+            <input type="text" class="form-control" formControlName="code">
+            <div class="form-control-icon">
+                <i data-feather="user"></i>
+            </div>
+        </div>
+        <div class="text-danger fs-12">
+            <div *ngFor="let validation of validation_messages.code">
+              <div class="error-message" *ngIf="vfForm.get('code').hasError(validation.type) &&
+                            vfForm.get('code').touched">
+                <div>
+                 {{"       "+validation.message}}
+                </div>
+              </div>
+            </div>
+          </div>
+    </div><br>
+    <div class="clearfix" style="text-align: center;">
+      <ngx-spinner></ngx-spinner>
+      <button id="login"  class="btn btn-primary btn-block col-10"  [disabled]="!vfForm.valid">
+       Submit
+
+      </button>
+    </div>
+</form>

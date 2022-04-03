@@ -1,0 +1,43 @@
+main.error-page {
+    min-height: 100vh;
+    background-attachment: fixed;
+    background-size: cover;
+    color: rgba(255, 255, 255, 0.9);
+    position: relative;
+  }
+  
+  main.error-page > * {
+    position: relative;
+    z-index: 1;
+  }
+  
+  main.error-page:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(92, 107, 192, 0.8);
+  }
+  
+  .error-page {
+    text-align: center;
+    height: calc(100vh - 120px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .error-page .error-page-item {
+    font-size: 12rem;
+    line-height: 14rem;
+    margin-left: -2rem;
+    text-shadow: -5px 1px 0px #4a5ab9;
+  }
+  
+  .error-page .error-page-item:nth-child(2) {
+    transform: translate(0, 10px);
+    display: inline-block;
+  }
